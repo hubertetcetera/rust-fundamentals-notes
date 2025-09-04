@@ -1,4 +1,4 @@
 # Summary
 
 ## Basics
-- [Hello, World!](./1_hello_world.md)
+- [Smart Pointers](./smart_pointers.md)
