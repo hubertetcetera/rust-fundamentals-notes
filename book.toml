@@ -1,0 +1,5 @@
+[book]
+authors = ["etcetera"]
+language = "en"
+src = "src"
+title = "Rust Fundamentals Notes"
