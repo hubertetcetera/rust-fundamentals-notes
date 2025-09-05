@@ -2,4 +2,4 @@
 
 ## Basics
 - [Ownership](./ownership.md)
-- [Smart Pointers](./smart_pointers.md)
+- [Iterators](./iterators.md)
