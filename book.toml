@@ -3,3 +3,7 @@ authors = ["etcetera"]
 language = "en"
 src = "src"
 title = "Rust Fundamentals Notes"
+
+[output.html]
+additional-css = ["ferris.css"]
+additional-js = ["ferris.js"]
