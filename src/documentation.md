@@ -1,6 +1,6 @@
 # Documentation Basics
 
-Rust makes it easy to generate standardized docs using `cargo doc`. It is as simple as using three slashes `///` and writing down the documentation for the specific snippet using markdown syntax. For example:
+Rust makes it easy to generate standardized docs using `cargo doc`. It is as simple as using three slashes `///` and writing down the documentation for the specific snippet using markdown syntax or `//!` for describing the document that contains the comment (e.g. `src/lib.rs`). For example:
 
 ```rust
 /// Adds one to the number given.
