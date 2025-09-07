@@ -7,3 +7,4 @@ title = "Rust Fundamentals Notes"
 [output.html]
 additional-css = ["ferris.css"]
 additional-js = ["ferris.js"]
+mathjax-support = true
