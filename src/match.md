@@ -85,3 +85,69 @@ In this specific case, the performance hit is negligible. But the “Negligible�
 5. Missed optimization opportunities
 
 - If this became a hot dispatch (lots of branches / called in a tight loop), guards can block jump-table/range optimizations the compiler might use with pure patterns.
+
+## Patterns vs. Expressions
+
+Another property of the `match` statement that caught me by surprise when I discovered it for the first time was that I couldn't match a string like this:
+
+```rust,does_not_compile
+let args[1]: Vec<String> = std::env::args().collect();
+
+match args[1] {
+  String::from("init") => println!("initialize"),
+  _ => println!("exiting...")
+}
+```
+
+If you try to compile the above code, you'll see the compiler complain about `fn` calls not being allowed in patterns.
+
+```
+error[E0164]: expected tuple struct or tuple variant, found associated function `String::from`
+  --> src/main.rs:17:9
+   |
+17 |         String::from("init") => {
+   |         ^^^^^^^^^^^^^^^^^^^^ `fn` calls are not allowed in patterns
+   |
+   = help: for more information, visit https://doc.rust-lang.org/book/ch19-00-patterns.html
+
+For more information about this error, try `rustc --explain E0164`.
+```
+
+Yet, the following code works perfectly fine:
+
+```rust
+let args[1]: Vec<String> = std::env::args().collect();
+
+if args[1] == String::from("init") {
+    println!("initialize")
+} else {
+    println!("exiting...")
+}
+```
+
+Similarly, if we construct a guard like `s if s == String::from("init")` within the `match` statement, then we can make our first example compile as well. We can also use the `.as_str()` method to parse the `args[1]` value and use string literals within the the match arms like this:
+
+```rust
+match args[1].as_str() {
+    "init" => println!("initialize"),
+    _ => println!("exiting..."),
+}
+```
+
+So, what's going on here?
+
+This is because `String::from("init")` is a _value_, not a _pattern_.
+
+> **IMPORTANT**
+>
+> Patterns can be literals (e.g. "init", 42), destructuring (e.g. Some(x)), identifiers, wildcards, etc.
+> But **you can’t call functions in a pattern**. `String::from("init")` is a function call expression, not a literal.
+
+In a `match` statement, the left-hand side is parsed as a _pattern_.
+But because patterns can’t contain arbitrary function calls or expressions our code fails to compile. This also explains why string literals work fine.
+
+String literals like `"init"` are `&'static str` and hence known at compile time. But `String` is an owned, heap-allocated type. `String::from("init")` allocates memory at runtime.
+
+You can’t put a runtime allocation in a pattern because the compiler must be able to _statically check_ that the pattern is something it can compare against without evaluating the code.
+
+On the other hand, `==` is **a runtime expression**, so such restrictions do not apply when we use an if statement like `if args[1] == String::from("init")`.
