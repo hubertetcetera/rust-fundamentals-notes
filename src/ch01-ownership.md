@@ -11,11 +11,7 @@ Example from the rust book:
 <Listing number="1-1" caption="A variable and the scope in which it is valid">
 
 ```rust
-    {                      // s is not valid here, since it's not yet declared
-        let s = "hello";   // s is valid from this point forward
-
-        // do stuff with s
-    }                      // this scope is now over, and s is no longer valid
+{{#rustdoc_include ../listings/ch01-ownership/listing-01-01/src/main.rs:here}}
 ```
 
 </Listing>
@@ -25,8 +21,8 @@ This allows Rust to automatically allocate and deallocate memory for most usecas
 Data types like `i32`, `bool`, `char`, etc. have a fixed size known at compile time and hence can live on the stack and implement the `Copy` trait. So you can do something like:
 
 ```rust
-    let x = 5;
-    let y = x;
+let x = 5;
+let y = x;
 ```
 
 Where the value of `x` i.e. `5` gets copied on the stack and assigned to `y`, keeping both `x` and `y` usable.
@@ -34,8 +30,8 @@ Where the value of `x` i.e. `5` gets copied on the stack and assigned to `y`, ke
 Because `String`, `Vec`, etc. may have an unknown size at compile time, they _point_ to data that lives on the heap. And since copying data from the heap is an expensive operation, we need to explicity `.clone()` the values when needed. Therefore, if we try to do something similar with a `String` like so:
 
 ```rust
-    let s1 = String::from("hello");
-    let s2 = s1;
+let s1 = String::from("hello");
+let s2 = s1;
 ```
 
 It won't have the same behavior, because the ownership of the `String` value is _moved_ to `s2`.
