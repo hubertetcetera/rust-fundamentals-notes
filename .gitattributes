@@ -1,0 +1,6 @@
+book/** linguist-vendored
+docs/** linguist-vendored
+theme/** linguist-vendored
+*.js    linguist-vendored
+*.css   linguist-vendored
+*.map   linguist-vendored
