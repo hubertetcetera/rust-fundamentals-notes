@@ -1,5 +1,11 @@
 # 🦀 rust-fundamentals-notes
 
+[![CI](https://github.com/hubertetcetera/rust-fundamentals-notes/actions/workflows/ci.yml/badge.svg)](https://github.com/hubertetcetera/rust-fundamentals-notes/actions/workflows/ci.yml)
+[![mdBook](https://github.com/hubertetcetera/rust-fundamentals-notes/actions/workflows/mdbook.yml/badge.svg)](https://github.com/hubertetcetera/rust-fundamentals-notes/actions/workflows/mdbook.yml)
+[![View Book](https://img.shields.io/badge/docs-view-green)](https://hubertetcetera.github.io/rust-fundamentals-notes/)
+[![Rust](https://img.shields.io/badge/rust-1.81+-orange.svg)](Cargo.toml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A collection of my personal notes while learning Rust.
 It’s not meant to be a comprehensive Rust guide — there are already excellent resources like [The Rust Book](https://doc.rust-lang.org/book/) and [Rust by Example](https://doc.rust-lang.org/rust-by-example/).
 
