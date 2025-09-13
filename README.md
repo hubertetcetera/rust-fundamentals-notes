@@ -19,7 +19,7 @@ Think of it as a field guide: the places where you might stumble, the patterns t
 Primarily me — I use it for quick revision and reinforcement.
 But if you’re new to Rust, you might find some of these notes useful, especially the parts that aren’t always obvious from reading the docs.
 
-## 🛠 Structure
+## 🚀 Usage
 
 This repo is built with [mdBook](https://rust-lang.github.io/mdBook/).
 You can browse the notes locally:
@@ -28,6 +28,26 @@ You can browse the notes locally:
 cargo install mdbook
 mdbook serve --open
 ```
+
+## 🔧 Tooling
+
+This repo uses [dprint](https://dprint.dev/) to keep Markdown, JSON, TOML, and YAML files consistently formatted.
+
+```bash
+cargo install dprint
+dprint fmt
+```
+
+Run `dprint check` before committing to ensure formatting passes CI.
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+- Keep notes concise and focused (don’t try to rewrite the Rust Book).
+- Add runnable examples in the `listings/` folder with proper `// ANCHOR` markers.
+- Run `cargo test --workspace` to make sure examples compile.
+- Format with `dprint fmt` before committing.
 
 ## 📝 Disclaimer
 
