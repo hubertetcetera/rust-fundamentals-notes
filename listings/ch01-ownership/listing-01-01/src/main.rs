@@ -1,3 +1,4 @@
+#[rustfmt::skip]
 fn main() {
     // ANCHOR: here
     {                      // s is not valid here, since it's not yet declared
