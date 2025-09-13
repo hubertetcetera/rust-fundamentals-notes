@@ -1,7 +1,7 @@
 # 🦀 rust-fundamentals-notes
 
 A collection of my personal notes while learning Rust.
-It’s not meant to be a comprehensive Rust guide — there are already excellent resources like [The Rust Book](https://doc.rust-lang.org/book/) and [Rust by Example](https://doc.rust-lang.org/rust-by-example/).  
+It’s not meant to be a comprehensive Rust guide — there are already excellent resources like [The Rust Book](https://doc.rust-lang.org/book/) and [Rust by Example](https://doc.rust-lang.org/rust-by-example/).
 
 This is a **curated set of concepts that stood out to me as non-trivial** when I first encountered them.
 Think of it as a field guide: the places where you might stumble, the patterns that finally trigger an “aha” moment and the bits of Rust I keep coming back to.
@@ -30,5 +30,6 @@ mdbook serve --open
 ```
 
 ## 📝 Disclaimer
--	This is not an official or exhaustive resource to learn rust and should not be used as a primary learning resource, these are just practical notes from my learning journey.
+
+- This is not an official or exhaustive resource to learn rust and should not be used as a primary learning resource, these are just practical notes from my learning journey.
 - If you want a complete reference, start with The Rust Book or the Rust Reference.
