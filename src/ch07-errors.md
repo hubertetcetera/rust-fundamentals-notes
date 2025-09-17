@@ -33,3 +33,25 @@ I won't dive deep into how to handle errors in Rust, I think the Rust book does 
 This section is TBD.
 
 </div>
+
+TODOs:
+
+- [ ] `Box<dyn std::error::Error>`
+- [ ] `thiserror`
+- [ ] How to think:
+  - Low level functions: Precise definitions for exactly what the error is
+  - Business Logic: Add context. What were you trying to do? Which object, path, or input failed?
+  - Boundary level: What does the user see? e.g. `error: could not open file at ~/.app/config.toml (file not found)`
+
+- [ ] `#[from]` vs `#[source]`
+  - Use #[from]
+    When the variant is just a passthrough of another error (no extra fields).
+    You want auto-conversion so you can write clean `?` calls.
+  - Use #[source]
+    When your error variant has additional context fields (like a path, object ID, or operation).
+    You still want to carry the original error, but you must build it manually so you can fill in the extra fields.
+- [ ] Pitfalls
+  - Redundant fields: if source already has path/status and you’ll display it, don’t duplicate unless you need it for matching or consistent UI.
+  - Leaking secrets: never include tokens/keys in Display. If needed, store them, but print redacted (\*\*\*) or only in Debug logs.
+  - Heavy fields: store identifiers, not whole objects (e.g., `&[u8]` lengths, not the data).
+  - Brittle strings: prefer typed fields (`PathBuf`, `Url`, `StatusCode`) over embedding everything in the message.
