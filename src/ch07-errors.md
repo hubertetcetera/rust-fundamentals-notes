@@ -55,3 +55,6 @@ TODOs:
   - Leaking secrets: never include tokens/keys in Display. If needed, store them, but print redacted (\*\*\*) or only in Debug logs.
   - Heavy fields: store identifiers, not whole objects (e.g., `&[u8]` lengths, not the data).
   - Brittle strings: prefer typed fields (`PathBuf`, `Url`, `StatusCode`) over embedding everything in the message.
+
+**tl;dr:**
+Start with target + cause (`path`, `#[source]`). Add only the one or two pieces of context that make the error actionable (`size`, `kind`, `offset`). Favor types over strings, and keep secrets out of `Display`.
