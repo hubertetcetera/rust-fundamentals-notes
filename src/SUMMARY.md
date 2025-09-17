@@ -8,3 +8,4 @@
 - [Match](ch04-match.md)
 - [Modulo Operator](ch05-modulo_operator.md)
 - [Documentation](ch06-documentation.md)
+- [Errors](ch07-errors.md)
