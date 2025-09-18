@@ -38,6 +38,7 @@ TODOs:
 
 - [ ] `Box<dyn std::error::Error>`
 - [ ] `thiserror`
+- [ ] `anyhow`
 - [ ] How to think:
   - Low level functions: Precise definitions for exactly what the error is
   - Business Logic: Add context. What were you trying to do? Which object, path, or input failed?
